@@ -26,7 +26,15 @@
     },
     methods: {
       saveArtile() {
-        console.log(this.article  );
+        this.$http.post('articles',this.article).then(res=>{
+          console.log(res.data)
+          this.$message({
+            message:'文章创建成功',
+            type:'success'
+          });
+          this.$router.push('/articles/index')
+        })
+       // console.log(this.article  );
       }
     }
   }
